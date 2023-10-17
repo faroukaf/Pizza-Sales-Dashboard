@@ -1,22 +1,22 @@
 from dash import dcc, html
 
-from ..utilities import ids
+from ..utilities import ids, get_metadata
 
 
 def render() -> html.Div:
   '''
-  Create slider to chose the month
+  Create checklist to chose the months
   '''
+
+  months = get_metadata.get_months_names()
+
   return html.Div(
     children=[
-      dcc.Slider(
-        min=1,
-        max=12,
-        step=1,
-        marks=get_month(),
-        value=1,
-        tooltip=(lambda x:{i: x[i] for i in range(len(x))})(get_month()),
-
+      dcc.Checklist(
+        id=ids.MONTHS_CHECKLIST,
+        options=[
+          {'label': months[m], 'value': m} for m in months
+        ]
       )
     ]
   )

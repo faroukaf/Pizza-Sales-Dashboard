@@ -1,6 +1,6 @@
 from dash import Dash, dcc, html
 from sqlite3 import Cursor
-from . import month_slider
+from . import months_checklist
 from ..utilities import classes_names
 
 THEME = 'dark'
@@ -19,7 +19,7 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
       html.Div(
         children=[html.H1(result[0])]
       ),
-      month_slider.render()
+      months_checklist.render()
     ],
     className= classes_names.MAIN_LAYOUT + THEME
   )
