@@ -16,5 +16,14 @@ MONTHS = {
             12: 'Dec',
           }
 
-def get_months_names() -> list[str]:
+def get_months_names() -> dict[str]:
   return MONTHS
+
+def get_sizes_name() -> dict[str]:
+  return {
+    'S': 'Small',
+    'M': 'Medium',
+    'L': 'Large',
+    'XL': 'X-Large',
+    'XXL': 'XX-Large'
+  }
