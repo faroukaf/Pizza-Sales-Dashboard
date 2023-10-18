@@ -3,6 +3,7 @@
   background-color: #999;
   height: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .single-value-card-dark{
@@ -22,7 +23,26 @@
   display: flex;
   justify-content: space-between;
   width: 1080px;
+}
 
+.page1-layout-dark{}
+
+.page2-layout-dark{}
+
+.swap-button-container-dark{
+  width: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+}
+
+.swap-button-dark{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 20px;
+  border-radius: 50%;
 }
 
 /* natural */
@@ -46,5 +66,12 @@
 .single-value-cards-light{
   background-color: aqua;
   display: flex;
-
 }
+
+.page1-layout-light{}
+
+.page2-layout-light{}
+
+.swap-button-container-light{}
+
+.swap-button-light{}
