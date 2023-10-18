@@ -1,0 +1,52 @@
+/* dark theme */
+.main-layout-dark{
+  background-color: #999;
+  height: 100%;
+  display: flex;
+}
+
+.single-value-card-dark{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #555;
+  border-left: 4px solid #555;
+  border-radius: 10px;
+  width: 200px; 
+
+}
+.single-value-card-dark > img{
+  height: 40px;
+}
+.single-value-cards-dark{
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  width: 1080px;
+
+}
+
+/* natural */
+.small-card-icon{
+  height: 40px;
+  background-color: #fff;
+}
+
+/*light theme */
+.main-layout-light{
+  background-color: #aaa;
+  display: flex;
+}
+
+.single-value-card-light{
+  align-items: center;
+}
+.single-value-card-dark img{
+  size: 20px;
+}
+.single-value-cards-light{
+  background-color: aqua;
+  display: flex;
+
+}

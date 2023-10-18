@@ -21,23 +21,3 @@ def render() -> html.Div:
     ]
   )
 
-def get_month() -> list[str]:
-  """
-  Get month name for month slider
-  """
-
-  return [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July',
-    'Aug',
-    'Sept',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]
-
