@@ -16,9 +16,7 @@
   width: 200px; 
 
 }
-.single-value-card-dark > img{
-  height: 40px;
-}
+
 .single-value-cards-dark{
   /* background-color: aqua; */
   display: flex;
