@@ -1,4 +1,4 @@
-import plotly.express as px
+import plotly.graph_objects as go
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from sqlite3 import Cursor
@@ -7,36 +7,45 @@ from ...utilities import classes_names, ids, fetch2df
 
 
 def render(
-    app: Dash, cursor: Cursor, title: str,
-    x: str, y: str, theme: str,
-    quire: str
-) -> html.Div:
-  '''(Dash) -> Div
+    all_annotations: list[list] ,axis_updates: dict,
+    cursor: Cursor, title: str,
+    x: str, y: str, color: str,
+    quire: str, order: int
+) -> go.Bar:
+  '''
   Create the card that hold horizontal bar chart
   '''
 
   data = fetch2df.get_quire_result(cursor, quire)
 
-  fig = px.bar(
-    data_frame=data,
-    x=x,
-    y=y,
+  plot = go.Bar(
+    x=data[x],
+    y=data[y],
+    marker_color=color,
     orientation='h',
-    width='full',
+    width=60,
+    name=title
   )
 
-  fig.update_layout(
-    # bgcolor='#000',
-    xaxis=dict(
+  x_axis_layout = dict(
         visible=False,
         zeroline=False,
         showline=False,
         # showlabel=False,
         showticklabels=False,
         showgrid=False,
-        domain=[0, 0.42],
+        domain=[((order-1)%3)/3, (((order-1)%3)+1)/3],
     )
-  )
+  
+  y_axis_layout = dict(
+        visible=False,
+        zeroline=False,
+        showline=False,
+        # showlabel=False,
+        showticklabels=False,
+        showgrid=False,
+        domain=[(order//4)/2, ((order//4)+1)/2],
+    )
 
   annotations = []
 
@@ -44,7 +53,7 @@ def render(
     print(i)
     temp = data.iloc[i, :]
     annotation = {
-      'xref': 'x1', 'yref': 'y1',
+      'xref': f'x{order}', 'yref': f'y{order}',
       'x': temp[x], 'y': temp[y],
       'bgcolor': '#fff',
       'text': str(temp[x]),
@@ -55,31 +64,20 @@ def render(
       'showarrow': False
     }
 
-    if temp[x] > 1000:
+    if temp[x] >= 1000:
       annotation['text'] = str(temp[x]/1000) + 'K'
 
     annotations.append(annotation)
 
-  for a in annotations:
-    print(a['text'])
+  # for a in annotations:
+  #   print(a['text'])
 
-  fig.update_layout(annotations=annotations)
+  all_annotations.append(annotations)
+  if order == 1:
+    axis_updates['xaxis'] = x_axis_layout
+    axis_updates['yaxis'] = y_axis_layout
+  else:
+    axis_updates[f'xaxis{order-1}'] = x_axis_layout
+    axis_updates[f'yaxis{order-1}'] = y_axis_layout
 
-  return html.Div(
-    # id=ids.PAGE2,
-    children=[
-      html.H3(title),
-      dcc.Graph(
-        figure=fig,
-        config={
-          # "fillFrame": True,
-          # 'frameMargins': True,
-          # 'plotGlPixelRatio': True,
-          'staticPlot': True
-        }
-        # style={'width': 1000}
-      )
-    ],
-    className= classes_names.BARH_CARD+theme,
-    hidden=False
-  )
+  return plot
