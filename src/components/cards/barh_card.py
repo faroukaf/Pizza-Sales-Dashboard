@@ -22,6 +22,11 @@ def render(
     x=data[x],
     y=data[y],
     marker_color=color,
+    marker={
+      'colorbar': {
+        'borderwidth': 20
+      }
+    },
     orientation='h',
     width=60,
     name=title
@@ -31,7 +36,7 @@ def render(
         visible=False,
         zeroline=False,
         showline=False,
-        # showlabel=False,
+        # ,
         showticklabels=False,
         showgrid=False,
         domain=[((order-1)%3)/3, (((order-1)%3)+1)/3],
@@ -50,7 +55,7 @@ def render(
   annotations = []
 
   for i in range(data.shape[0]):
-    print(i)
+    # print(i)
     temp = data.iloc[i, :]
     annotation = {
       'xref': f'x{order}', 'yref': f'y{order}',
@@ -69,15 +74,9 @@ def render(
 
     annotations.append(annotation)
 
-  # for a in annotations:
-  #   print(a['text'])
-
   all_annotations.append(annotations)
-  if order == 1:
-    axis_updates['xaxis'] = x_axis_layout
-    axis_updates['yaxis'] = y_axis_layout
-  else:
-    axis_updates[f'xaxis{order-1}'] = x_axis_layout
-    axis_updates[f'yaxis{order-1}'] = y_axis_layout
+  
+  axis_updates[f'xaxis{order}'] = x_axis_layout
+  axis_updates[f'yaxis{order}'] = y_axis_layout
 
   return plot

@@ -36,5 +36,5 @@ def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
       # months_checklist.render()
     ],
     className= classes_names.PAGE1_LAYOUT+theme,
-    hidden=False
+    hidden=True
   )

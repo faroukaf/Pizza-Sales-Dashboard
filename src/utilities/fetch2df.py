@@ -31,5 +31,5 @@ def get_quire_result(cursor: Cursor, quire: str) -> pd.DataFrame:
   """
   cursor.execute(quire)
   data = fetch2df(cursor)
-  print(data)
+  # print(data)
   return data

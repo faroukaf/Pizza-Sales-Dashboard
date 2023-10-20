@@ -134,16 +134,16 @@ def render(
 
   annotations = []
 
-  print('>>>>>>>>>>>>>>>>>>>>>')
+  # print('>>>>>>>>>>>>>>>>>>>>>')
 
-  # for j in range(len(all_annotations[0])):
-  #   for i in range(len(all_annotations)):
-  #     print(all_annotations[i][j])
-  #     annotations.append(all_annotations[i][j])
+  # # for j in range(len(all_annotations[0])):
+  # #   for i in range(len(all_annotations)):
+  # #     print(all_annotations[i][j])
+  # #     annotations.append(all_annotations[i][j])
   
-  for i in axis_updates:
-    print(i)
-    print(axis_updates[i])
+  # for i in axis_updates:
+  #   print(i)
+  #   print(axis_updates[i])
 
   fig.update_layout(**axis_updates)
   fig.update_layout(annotations=annotations)
