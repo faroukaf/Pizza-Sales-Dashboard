@@ -13,3 +13,5 @@ SWAP_BUTTON_CONTAINER = 'swap-button-container-'
 SWAP_BUTTON = 'swap-button-'
 
 SMALL_CARD_ICON = 'small-card-icon'
+
+BARH_CARD = 'barh-card-'

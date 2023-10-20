@@ -45,6 +45,14 @@
   border-radius: 50%;
 }
 
+.barh-card-dark{
+  border-radius: 40px;
+  /* border-color: #000; */
+  /* border-width: 20px; */
+  border: #000 dashed 10px;
+  width: 1000px;
+}
+
 /* natural */
 .small-card-icon{
   height: 40px;
@@ -75,3 +83,5 @@
 .swap-button-container-light{}
 
 .swap-button-light{}
+
+.barh-card-light{}

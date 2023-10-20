@@ -1,7 +1,7 @@
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from sqlite3 import Cursor
-from .cards import top_cards
+from .cards import top_cards, barh_card
 from ..utilities import classes_names, ids
 
 
@@ -22,8 +22,18 @@ def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
     id=ids.PAGE2,
     children=[
       top_cards.render(app, cursor, theme),
-      html.H1('page2')
-      # months_checklist.render()
+      barh_card.render(
+        app, cursor, 'Top 5 Pizzas by Total Orders',
+        'Total Order', 'Pizza Name', theme,
+        """
+        SELECT pizza_name As `Pizza Name`,
+        count(DISTINCT order_id)
+        AS `Total Order` FROM pizza
+        GROUP BY pizza_name
+        ORDER BY count(DISTINCT order_id) DESC
+        LIMIT 5;
+        """
+      )
     ],
     className= classes_names.PAGE2_LAYOUT+theme,
     hidden=False

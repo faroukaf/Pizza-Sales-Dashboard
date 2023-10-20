@@ -10,3 +10,5 @@ HIDDEN_DIV1 = 'hidden-div1'
 LEFT_PAGE_SWAP = 'left-page-swap'
 RIGHT_PAGE_SWAP = 'right-page-swap'
 SWAP_CONTAINER = 'swap-container'
+
+BARH_CARD = 'barh-card'
