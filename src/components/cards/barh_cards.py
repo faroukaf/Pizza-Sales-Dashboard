@@ -17,7 +17,7 @@ def render(
     rows=2, cols=3,
     # specs=[[{}, {}, {}], [{}, {}, {}]],
     # shared_xaxes=False, shared_yaxes=False,
-    vertical_spacing=.1,
+    vertical_spacing=.0001,
     # horizontal_spacing=.5
   )
 

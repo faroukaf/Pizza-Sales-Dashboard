@@ -22,13 +22,13 @@ def render(
     x=data[x],
     y=data[y],
     marker_color=color,
-    marker={
-      'colorbar': {
-        'borderwidth': 20
-      }
-    },
+    # marker={
+    #   'colorbar': {
+    #     'borderwidth': 20
+    #   }
+    # },
     orientation='h',
-    width=60,
+    # width=10,
     name=title
   )
 
@@ -43,7 +43,7 @@ def render(
     )
   
   y_axis_layout = dict(
-        visible=False,
+        visible=True,
         zeroline=False,
         showline=False,
         # showlabel=False,
