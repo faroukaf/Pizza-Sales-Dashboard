@@ -1,2 +1,2 @@
 # Pizza-Sales-Dashboard
-Pizza Sales Dashboard using Power Python, Dash and SQL
+Pizza Sales Dashboard using Python, Dash and SQL
