@@ -13,7 +13,8 @@ def main() -> None:
     __name__,
     external_stylesheets=[
       dbc.themes.DARKLY,
-      dbc.icons.BOOTSTRAP
+      dbc.icons.BOOTSTRAP,
+      dbc.icons.FONT_AWESOME
     ]
   )
   cursor = connector.connect('data/pizza.db')
