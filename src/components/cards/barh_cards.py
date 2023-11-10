@@ -39,7 +39,7 @@ def render(
         """,
         1
       ),
-      1, 1
+      2, 1
   )
 
   fig.add_trace(
@@ -57,7 +57,7 @@ def render(
         """,
         2
       ),
-      1, 2
+      2, 2
   )
 
   fig.add_trace(
@@ -75,7 +75,7 @@ def render(
         """,
         3
       ),
-      1, 3
+      2, 3
   )
 
   fig.add_trace(
@@ -93,7 +93,7 @@ def render(
         """,
         4
       ),
-      2, 1
+      1, 1
   )
 
   fig.add_trace(
@@ -111,7 +111,7 @@ def render(
         """,
         5
       ),
-      2, 2
+      1, 2
   )
 
   fig.add_trace(
@@ -129,7 +129,7 @@ def render(
         """,
         6
       ),
-      2, 3
+      1, 3
   )
 
   annotations = []

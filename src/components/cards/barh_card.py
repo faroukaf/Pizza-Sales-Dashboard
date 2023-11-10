@@ -32,6 +32,8 @@ def render(
     name=title
   )
 
+  print('data', data)
+
   x_axis_layout = dict(
         visible=False,
         zeroline=False,
