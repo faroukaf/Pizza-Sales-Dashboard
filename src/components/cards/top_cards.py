@@ -1,13 +1,11 @@
 import dash_bootstrap_components as dbc
-from dash import Dash, dcc, html
-from dash.dependencies import Input, Output
+from dash import Dash
 from sqlite3 import Cursor
 
 from . import single_value_card
-from ...utilities import classes_names
 
 
-def render(app: Dash, data: Cursor, theme: str) -> html.Div:
+def render(app: Dash, data: Cursor, theme: str) -> dbc.Row:
   """(Dash, Cursor, str) -> Div
   create the card that hold the single value card 
   """

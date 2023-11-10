@@ -1,8 +1,5 @@
-from dash import Dash, dcc, html
-from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-
-from ...utilities import classes_names
+from dash import Dash, html
 
 
 def render(app: Dash, value: str, title:str, icon: str, theme: str) -> dbc.Col:
