@@ -1,10 +1,11 @@
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
 
 from ...utilities import classes_names
 
 
-def render(app: Dash, value: str, title:str, src: str, theme: str) -> html.Div:
+def render(app: Dash, value: str, title:str, icon: str, theme: str) -> dbc.Col:
   """(Dash, str, str, str, str) -> Div
   create the card of the single value 
   app: is the app
@@ -12,15 +13,18 @@ def render(app: Dash, value: str, title:str, src: str, theme: str) -> html.Div:
   title: is title shown in the bottom
   src: the src of the picture
   """
-  return html.Div(
-    children=[
-      html.Img(
-        src=src,
-        className=classes_names.SMALL_CARD_ICON
-      ),
-      html.H2(value),
-      html.H5(title)
-    ],
-    className=classes_names.SINGLE_VALUE_CARD+theme,
+  return dbc.Col(
+    dbc.Card(
+      html.Div(
+        children=[
+          html.I(
+            className=icon+' fa-3x'
+          ),
+          html.H2(value),
+          html.H5(title)
+        ],
+        className="d-flex flex-column text-center h-100",
+      )
+    )
   )
 # '..assets/test.png'
