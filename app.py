@@ -9,6 +9,7 @@ def main() -> None:
   The main app
   """
 
+  LOCALE = 'en'
   app = Dash(
     __name__,
     external_stylesheets=[

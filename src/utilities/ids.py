@@ -12,5 +12,6 @@ RIGHT_PAGE_SWAP = 'right-page-swap'
 SWAP_CONTAINER = 'swap-container'
 
 MONTH_LINEAR = 'month-linear'
+DAILY_BAR = 'daily-bar'
 
 BARH_CARD = 'barh-card'

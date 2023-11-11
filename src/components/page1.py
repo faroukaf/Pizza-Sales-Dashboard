@@ -34,6 +34,7 @@ def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
     children=[
       html.H1('page1'),
       top_cards.render(app, cursor, theme),
+      html.Br(),
       page1_cards.render(app, cursor, theme)
       # months_checklist.render()
     ],
