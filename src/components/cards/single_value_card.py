@@ -3,7 +3,7 @@ from dash import Dash, html
 
 
 def render(app: Dash, value: str, title:str, icon: str, theme: str) -> dbc.Col:
-  """(Dash, str, str, str, str) -> Div
+  """(Dash, str, str, str, str) -> Col
   create the card of the single value 
   app: is the app
   value: is the value shown in the middle

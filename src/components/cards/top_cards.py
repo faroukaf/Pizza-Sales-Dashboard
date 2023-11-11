@@ -6,7 +6,7 @@ from . import single_value_card
 
 
 def render(app: Dash, data: Cursor, theme: str) -> dbc.Row:
-  """(Dash, Cursor, str) -> Div
+  """(Dash, Cursor, str) -> Row
   create the card that hold the single value card 
   """
 
