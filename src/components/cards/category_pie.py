@@ -18,22 +18,20 @@ def render(
 
   data = fetch2df.get_quire_result(
     cursor,
-    'Select gdn(order_date) as Day,'+\
-      'sum(total_price)/1000 as Revenue from pizza group by gdn(order_date);'
+    'Select pizza_category as Category,'+\
+      'sum(total_price) as Revenue from pizza group by pizza_category;'
     )
 
-  data.sort_values(by=['Day'], key=lambda s: [get_day_num(m) for m in s], inplace=True)
-
-  plot = px.bar(
-    x=data['Day'],
-    y=data['Revenue'],
+  plot = px.pie(
+    names=data['Category'],
+    values=data['Revenue'],
     labels={
-      'x': 'Day',
+      'x': 'Category',
       'y': 'Revenue (k)'
     },
   )
 
-  # print('data', data, data.columns, sep='\n')
+  print('data', data, data.columns, sep='\n')
 
   # plot.update_layout(yaxis={'visible': False, 'showticklabels': False})
   # plot.update_traces(marker_color=color)
@@ -43,12 +41,12 @@ def render(
       dbc.CardBody(
         [
           dcc.Graph(
-            id=ids.DAILY_BAR,
+            id=ids.CATEGORY_PIE,
             figure=plot
           ),
           html.H3(title)
         ],
-        className='text-center w-47'
+        className='text-center w-30'
       )
     )
   )

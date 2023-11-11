@@ -2,7 +2,10 @@ import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from sqlite3 import Cursor
-from . import month_linear, daily_bar
+from . import (
+  month_linear, daily_bar,
+  category_pie
+)
 from ...utilities import classes_names, ids
 
 
@@ -38,10 +41,11 @@ def render(app: Dash, cursor: Cursor, theme: str) -> dbc.Col:
           month_linear.render(cursor, 'Monthly Trend for Total Order'),
         ]
       ),
+      html.Br(),
       dbc.Row(
         children=[
           #pie size,
-          #pie category,
+          category_pie.render(cursor, '% of Sale by Category'),
           #tunnel category
         ]
       )
