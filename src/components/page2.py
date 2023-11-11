@@ -22,6 +22,7 @@ def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
     id=ids.PAGE2,
     children=[
       top_cards.render(app, cursor, theme),
+      html.Br(),
       barh_cards.render(app, cursor, theme)
     ],
     className= classes_names.PAGE2_LAYOUT+theme,

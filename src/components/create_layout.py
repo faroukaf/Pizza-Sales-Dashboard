@@ -12,13 +12,13 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
   Create the layout of the app
   '''
 
-  swap_pages_logic.swap(app)
+  # swap_pages_logic.swap(app)
 
   return html.Div(
     children=[
       page1.render(app, cursor, THEME),
       page2.render(app, cursor, THEME),
-      swap_pages.render(app, cursor, THEME)
+      # swap_pages.render(app, cursor, THEME)
       # months_checklist.render()
     ],
     className= classes_names.MAIN_LAYOUT + THEME
