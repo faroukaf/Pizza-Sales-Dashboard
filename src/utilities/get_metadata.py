@@ -7,14 +7,32 @@ MONTHS = {
             3: 'Mar',
             4: 'Apr',
             5: 'May',
-            6: 'June',
-            7: 'July',
+            6: 'Jun',
+            7: 'Jul',
             8: 'Aug',
-            9: 'Sept',
+            9: 'Sep',
             10: 'Oct',
             11: 'Nov',
             12: 'Dec',
           }
+
+MONTHS_NUM = {
+            'Jan': 1,
+            'Feb': 2,
+            'Mar': 3,
+            'Apr': 4,
+            'May': 5,
+            'Jun': 6,
+            'Jul': 7,
+            'Aug': 8,
+            'Sep': 9,
+            'Oct': 10,
+            'Nov': 11,
+            'Dec': 12,
+          }
+
+def get_month_num(name) -> int:
+  return MONTHS_NUM[name]
 
 def get_months_names() -> dict[str]:
   return MONTHS

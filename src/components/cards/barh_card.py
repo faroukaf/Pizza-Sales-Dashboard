@@ -30,7 +30,7 @@ def render(
     orientation='h',
   )
 
-  print('data', data)
+  # print('data', data)
 
   plot.update_layout(yaxis={'visible': False, 'showticklabels': False})
   plot.update_traces(marker_color=color)
