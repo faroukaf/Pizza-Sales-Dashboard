@@ -4,7 +4,7 @@ from dash import dcc, html
 from sqlite3 import Cursor
 
 from ...utilities import ids, fetch2df
-from ...utilities.get_metadata import get_month_num, MONTHS_NUM
+from ...utilities.get_metadata import get_month_num
 
 
 def render(
@@ -22,7 +22,7 @@ def render(
       'sum(total_price)/1000 as Revenue from pizza group by gmn(order_date);'
     )
 
-  data.sort_values(by=['Month'], key=lambda s: [MONTHS_NUM[m] for m in s], inplace=True)
+  data.sort_values(by=['Month'], key=lambda s: [get_month_num(m) for m in s], inplace=True)
 
   plot = px.line(
     x=data['Month'],
