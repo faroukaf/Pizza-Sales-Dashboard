@@ -1,13 +1,13 @@
+import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from sqlite3 import Cursor
-from .cards import top_cards, page1_cards
-from ..utilities import classes_names, ids
+from ...utilities import classes_names, ids
 
 
-def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
-  '''(Dash) -> Div
-  Create the page 1 layout of the app
+def render(app: Dash, cursor: Cursor, theme: str) -> dbc.Col:
+  '''(Dash) -> Col
+  Create collections of carts in page 1 layout of the app
   '''
 
   # @app.callback(
@@ -29,14 +29,21 @@ def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
   #   return {'page-number': 1}, False, True#, False
 
 
-  return html.Div(
-    id=ids.PAGE1,
+  return dbc.Col(
     children=[
-      html.H1('page1'),
-      top_cards.render(app, cursor, theme),
-      page1_cards.render(app, cursor, theme)
-      # months_checklist.render()
+      dbc.Row(
+        children=[
+          #linear month,
+          #daily bar
+        ]
+      ),
+      dbc.Row(
+        children=[
+          #pie size,
+          #pie category,
+          #tunnel category
+        ]
+      )
     ],
-    className= classes_names.PAGE1_LAYOUT+theme,
-    hidden=False
+    className='w-70'
   )

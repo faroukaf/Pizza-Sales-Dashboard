@@ -68,5 +68,5 @@ def render(app: Dash, data: Cursor, theme: str) -> dbc.Row:
       single_value_card.render(app, value4, title4, icon4, theme),
       single_value_card.render(app, value5, title5, icon5, theme),
     ],
-    className='d-flex align-items-stretch'
+    className='d-flex align-items-stretch w-70'
   )
