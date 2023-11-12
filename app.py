@@ -12,6 +12,7 @@ def main() -> None:
   LOCALE = 'en'
   app = Dash(
     __name__,
+    use_pages=True,
     external_stylesheets=[
       dbc.themes.DARKLY,
       dbc.icons.BOOTSTRAP,
