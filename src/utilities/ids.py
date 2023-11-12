@@ -15,5 +15,6 @@ MONTH_LINEAR = 'month-linear'
 DAILY_BAR = 'daily-bar'
 CATEGORY_PIE = 'category-pie'
 SIZE_PIE = 'size-pie'
+CATEGORY_FUNNEL = 'category-funnel'
 
 BARH_CARD = 'barh-card'
