@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output
 from sqlite3 import Cursor
 from . import (
   month_linear, daily_bar,
-  category_pie
+  category_pie, size_pie
 )
 from ...utilities import classes_names, ids
 
@@ -44,7 +44,7 @@ def render(app: Dash, cursor: Cursor, theme: str) -> dbc.Col:
       html.Br(),
       dbc.Row(
         children=[
-          #pie size,
+          size_pie.render(cursor, '% of Sale by Size'),
           category_pie.render(cursor, '% of Sale by Category'),
           #tunnel category
         ]

@@ -14,5 +14,6 @@ SWAP_CONTAINER = 'swap-container'
 MONTH_LINEAR = 'month-linear'
 DAILY_BAR = 'daily-bar'
 CATEGORY_PIE = 'category-pie'
+SIZE_PIE = 'size-pie'
 
 BARH_CARD = 'barh-card'
