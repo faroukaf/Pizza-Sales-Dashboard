@@ -5,7 +5,7 @@ from sqlite3 import Cursor
 from . import single_value_card
 
 
-def render(app: Dash, data: Cursor, theme: str) -> dbc.Row:
+def render(app: Dash, data: Cursor) -> dbc.Row:
   """(Dash, Cursor, str) -> Row
   create the card that hold the single value card 
   """
@@ -62,11 +62,11 @@ def render(app: Dash, data: Cursor, theme: str) -> dbc.Row:
 
   return dbc.Row(
     children=[
-      single_value_card.render(app, value1, title1, icon1, theme),
-      single_value_card.render(app, value2, title2, icon2, theme),
-      single_value_card.render(app, value3, title3, icon3, theme),
-      single_value_card.render(app, value4, title4, icon4, theme),
-      single_value_card.render(app, value5, title5, icon5, theme),
+      single_value_card.render(app, value1, title1, icon1),
+      single_value_card.render(app, value2, title2, icon2),
+      single_value_card.render(app, value3, title3, icon3),
+      single_value_card.render(app, value4, title4, icon4),
+      single_value_card.render(app, value5, title5, icon5),
     ],
     className='d-flex align-items-stretch w-70'
   )
