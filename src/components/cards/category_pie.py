@@ -4,14 +4,13 @@ from dash import dcc, html
 from sqlite3 import Cursor
 
 from ...utilities import ids, fetch2df
-from ...utilities.get_metadata import get_day_num
 
 
 def render(
     cursor: Cursor, title: str,
 ) -> dbc.Col:
   '''
-  Create the card that hold horizontal bar chart
+  Create the card that hold % of each category revenue represented in pie chart
   '''
 
   # def 2
@@ -25,16 +24,9 @@ def render(
   plot = px.pie(
     names=data['Category'],
     values=data['Revenue'],
-    labels={
-      'x': 'Category',
-      'y': 'Revenue (k)'
-    },
   )
 
-  print('data', data, data.columns, sep='\n')
-
-  # plot.update_layout(yaxis={'visible': False, 'showticklabels': False})
-  # plot.update_traces(marker_color=color)
+  # print('data', data, data.columns, sep='\n')
 
   return dbc.Col(
     dbc.Card(
