@@ -24,6 +24,12 @@ def render(
   plot = px.pie(
     names=data['Category'],
     values=data['Revenue'],
+    hole=.6
+  )
+
+  plot.update_traces(
+    textinfo='label+text+percent',
+    textposition='outside'
   )
 
   # print('data', data, data.columns, sep='\n')

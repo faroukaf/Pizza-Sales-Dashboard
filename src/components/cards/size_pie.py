@@ -24,7 +24,17 @@ def render(
   plot = px.pie(
     names=data['Size'],
     values=data['Revenue'],
+    hole=.6
   )
+
+  plot.update_traces(
+    textinfo='label+text+percent',
+    textposition='outside'
+  )
+  # plot.add_annotation(dict(x=1, y=0.4,  align='center',
+  #                       xref = "paper", yref = "paper",
+  #                       showarrow = False, font_size=22,
+  #                       text="Gender"))
 
   print('data', data, data.columns, sep='\n')
 
