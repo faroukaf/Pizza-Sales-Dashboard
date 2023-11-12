@@ -17,7 +17,7 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
   return html.Div(
     children=[
       page1.render(app, cursor, THEME),
-      # page2.render(app, cursor, THEME),
+      page2.render(app, cursor, THEME),
       # swap_pages.render(app, cursor, THEME)
       # months_checklist.render()
     ],
