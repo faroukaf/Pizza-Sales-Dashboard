@@ -13,7 +13,7 @@ def render(
   Create the page 1 layout of the app
   '''
 
-  cursor = connector.connect('...data/pizza.db')
+  # cursor = connector.connect('.../data/pizza.db')
 
   # @app.callback(
   #     [
@@ -40,7 +40,8 @@ def render(
       # html.H1('page1'),
       # top_cards.render(app, cursor, theme),
       # html.Br(),
-      page1_cards.render(cursor)
+      # page1_cards.render(cursor)
+      html.H1('page 1')
       # months_checklist.render()
     ],
     # className= classes_names.PAGE1_LAYOUT+theme,

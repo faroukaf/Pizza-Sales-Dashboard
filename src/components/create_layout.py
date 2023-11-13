@@ -20,10 +20,11 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
         Output(ids.MY_LAYOUT, 'children'),
         Input(ids.CURRENT_URL, 'pathname')
   )
-  def display_page(pathname):
-      if '1':
+  def display_page(pathname: str):
+      page_path = pathname.split('/')[-1]
+      if page_path == '1':
         return page1.render()
-      elif '2':
+      elif page_path == '2':
         return page2.render()
 
   return dbc.Container(

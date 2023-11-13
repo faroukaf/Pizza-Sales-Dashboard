@@ -13,7 +13,8 @@ def render(
   Create the page 2 layout of the app
   '''
 
-  cursor = connector.connect('...data/pizza.db')
+  # cursor = connector.connect('.../data/pizza.db')
+  # print('..')
 
   # @app.callback(
   #   Output(ids.PAGE2, 'children'),
@@ -28,7 +29,8 @@ def render(
     children=[
       # top_cards.render(app, cursor, theme),
       # html.Br(),
-      barh_cards.render(cursor)
+      # barh_cards.render(cursor)
+      html.H1('page 2')
     ],
     # className= classes_names.PAGE2_LAYOUT+theme,
     # hidden=False
