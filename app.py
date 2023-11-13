@@ -1,4 +1,4 @@
-from dash import Dash
+from dash import Dash, dcc
 import dash_bootstrap_components as dbc
 from src.components import create_layout
 from src.utilities import connector

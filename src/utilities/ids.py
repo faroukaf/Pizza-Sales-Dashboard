@@ -2,7 +2,8 @@
 This module hold the ids for all components
 """
 
-MONTHS_CHECKLIST = 'months-checklist'
+MY_LAYOUT = 'my-layout'
+CURRENT_URL = 'current-url'
 
 PAGE1 = 'page1'
 PAGE2 = 'page2'
@@ -18,3 +19,5 @@ SIZE_PIE = 'size-pie'
 CATEGORY_FUNNEL = 'category-funnel'
 
 BARH_CARD = 'barh-card'
+
+MONTHS_CHECKLIST = 'months-checklist'
