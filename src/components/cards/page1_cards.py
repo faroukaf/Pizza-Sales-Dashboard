@@ -10,8 +10,8 @@ from . import (
 from ...utilities import classes_names, ids
 
 
-def render(app: Dash, cursor: Cursor, theme: str) -> dbc.Col:
-  '''(Dash) -> Col
+def render(cursor: Cursor) -> dbc.Col:
+  '''(Cursor) -> Col
   Create collections of carts in page 1 layout of the app
   '''
 

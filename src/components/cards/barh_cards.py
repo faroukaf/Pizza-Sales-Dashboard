@@ -1,15 +1,19 @@
 import dash_bootstrap_components as dbc
 from dash import Dash, html
 from sqlite3 import Cursor
+
 from . import barh_card
+from ...utilities import connector
 
 
 def render(
-    app: Dash, cursor: Cursor, theme: str,
+    cursor: Cursor,
 ) -> dbc.Col:
-  '''(Dash, Cursor, str) -> Col
+  '''(Cursor) -> Col
   Create the card that hold horizontal bar chart
   '''
+
+  # cursor = connector.connect('....data/pizza.db')
 
   plot1 = barh_card.render(
       cursor, 'Top 5 Pizzas by Revenue',

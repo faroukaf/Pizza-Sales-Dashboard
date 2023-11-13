@@ -22,9 +22,9 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
   )
   def display_page(pathname):
       if '1':
-        return page1.render(app, cursor, 'dark')
+        return page1.render()
       elif '2':
-        return page2.render(app, cursor, 'dark')
+        return page2.render()
 
   return dbc.Container(
     [

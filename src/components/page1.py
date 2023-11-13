@@ -1,14 +1,19 @@
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from sqlite3 import Cursor
+
 from .cards import top_cards, page1_cards
-from ..utilities import classes_names, ids
+from ..utilities import classes_names, ids, connector
 
 
-def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
+def render(
+    # app: Dash, cursor: Cursor, theme: str
+  ) -> html.Div:
   '''(Dash) -> Div
   Create the page 1 layout of the app
   '''
+
+  cursor = connector.connect('...data/pizza.db')
 
   # @app.callback(
   #     [
@@ -32,12 +37,12 @@ def render(app: Dash, cursor: Cursor, theme: str) -> html.Div:
   return html.Div(
     id=ids.PAGE1,
     children=[
-      html.H1('page1'),
-      top_cards.render(app, cursor, theme),
-      html.Br(),
-      page1_cards.render(app, cursor, theme)
+      # html.H1('page1'),
+      # top_cards.render(app, cursor, theme),
+      # html.Br(),
+      page1_cards.render(cursor)
       # months_checklist.render()
     ],
-    className= classes_names.PAGE1_LAYOUT+theme,
-    hidden=False
+    # className= classes_names.PAGE1_LAYOUT+theme,
+    # hidden=False
   )
