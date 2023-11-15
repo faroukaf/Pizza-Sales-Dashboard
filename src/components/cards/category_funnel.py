@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 from sqlite3 import Cursor
 
+from . import common_card
 from ...utilities import ids, fetch2df
 
 
@@ -32,24 +33,19 @@ def render(
     # height=550
   )
 
-  # plot.update_traces(
-  #   textinfo='label+text+percent',
-  #   textposition='outside'
+  return common_card.render(plot, ids.CATEGORY_FUNNEL, .7,  .94, 3)
+
+
+  # return dbc.Col(
+  #   dbc.Card(
+  #     dbc.CardBody(
+  #       [
+  #         dcc.Graph(
+  #           id=ids.CATEGORY_FUNNEL,
+  #           figure=plot
+  #         ),
+  #       ]
+  #     )
+  #   ),
+  #   width=4
   # )
-
-  # print('data', data, data.columns, sep='\n')
-
-  return dbc.Col(
-    dbc.Card(
-      dbc.CardBody(
-        [
-          dcc.Graph(
-            id=ids.CATEGORY_FUNNEL,
-            figure=plot
-          ),
-          html.H3(title)
-        ],
-        className='text-center w-30'
-      )
-    )
-  )

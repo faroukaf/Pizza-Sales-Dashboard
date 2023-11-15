@@ -3,8 +3,14 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 from sqlite3 import Cursor
 
+from . import common_card
 from ...utilities import fetch2df
 
+def ids_generator():
+    for i in range(1, 7):
+      yield f'barh {i}'
+
+ids = ids_generator()
 
 def render(
     cursor: Cursor, title: str,
@@ -28,6 +34,7 @@ def render(
     #   }
     # },
     orientation='h',
+    title=title
   )
 
   # print('data', data)
@@ -35,16 +42,17 @@ def render(
   plot.update_layout(yaxis={'visible': False, 'showticklabels': False})
   plot.update_traces(marker_color=color)
 
-  return dbc.Col(
-    dbc.Card(
-      dbc.CardBody(
-        [
-          dcc.Graph(
-            figure=plot
-          ),
-          html.H3(title)
-        ],
-        className='text-center w-30'
-      )
-    )
-  )
+  return common_card.render(plot, next(ids), .45,  .94, 4)
+  # return dbc.Col(
+  #   dbc.Card(
+  #     dbc.CardBody(
+  #       [
+  #         dcc.Graph(
+  #           figure=plot
+  #         ),
+  #         # html.H3(title)
+  #       ],
+  #       className='text-center w-30'
+  #     )
+  #   )
+  # )

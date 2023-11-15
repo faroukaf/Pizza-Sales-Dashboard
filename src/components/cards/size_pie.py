@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 from sqlite3 import Cursor
 
+from . import common_card
 from ...utilities import ids, fetch2df
 
 
@@ -24,7 +25,8 @@ def render(
   plot = px.pie(
     names=data['Size'],
     values=data['Revenue'],
-    hole=.6
+    hole=.6,
+    title=title
   )
 
   plot.update_traces(
@@ -38,17 +40,20 @@ def render(
 
   print('data', data, data.columns, sep='\n')
 
-  return dbc.Col(
-    dbc.Card(
-      dbc.CardBody(
-        [
-          dcc.Graph(
-            id=ids.SIZE_PIE,
-            figure=plot
-          ),
-          html.H3(title)
-        ],
-        className='text-center w-30'
-      )
-    )
-  )
+  return common_card.render(plot, ids.SIZE_PIE, .52,  .94, 3)
+
+
+  # return dbc.Col(
+  #   dbc.Card(
+  #     dbc.CardBody(
+  #       [
+  #         dcc.Graph(
+  #           id=ids.SIZE_PIE,
+  #           figure=plot
+  #         ),
+  #         html.H3(title)
+  #       ],
+  #       className='text-center w-30'
+  #     )
+  #   )
+  # )
