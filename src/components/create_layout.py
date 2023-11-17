@@ -3,16 +3,17 @@ from sqlite3 import Cursor
 from dash import Dash, dcc, html, callback
 from dash.dependencies import Input, Output
 
-from . import page1, page2, swap_pages
+from . import page1, page2
 from .cards import top_cards
-from ..utilities import classes_names, swap_pages_logic, ids
+from ..utilities import ids
+from ..utilities.source import DataSource
 
 
 THEME = 'dark'
 
 
-def render(app: Dash, cursor: Cursor) -> html.Div:
-  '''(Dash) -> Div
+def render(app: Dash, source: DataSource) -> html.Div:
+  '''(DataSource) -> Div
   Create the layout of the app
   '''
 
@@ -23,9 +24,9 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
   def display_page(pathname: str):
       page_path = pathname.split('/')[-1]
       if page_path == '1':
-        return page1.render()
+        return page1.render(source)
       elif page_path == '2':
-        return page2.render()
+        return page2.render(source)
 
   return dbc.Container(
     [
@@ -43,7 +44,7 @@ def render(app: Dash, cursor: Cursor) -> html.Div:
       [
         dbc.Col(
           [
-            top_cards.render(app, cursor, 'dark'),
+            top_cards.render(app, source),
             dbc.Container(id=ids.MY_LAYOUT)
 
           ],

@@ -1,7 +1,9 @@
 from dash import Dash, dcc
 import dash_bootstrap_components as dbc
+
 from src.components import create_layout
 from src.utilities import connector
+from src.utilities.source import DataSource
 # from .src.components.create_layout import render as create_layout
 
 def main() -> None:
@@ -18,8 +20,9 @@ def main() -> None:
       dbc.icons.FONT_AWESOME
     ]
   )
-  cursor = connector.connect('data/pizza.db')
-  app.layout = create_layout.render(app, cursor)
+  # cursor = connector.connect('data/pizza.db')
+  source = DataSource('data/pizza.db')
+  app.layout = create_layout.render(app, source)
 
   app.run(port=4000, debug=True)
 
