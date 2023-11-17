@@ -1,72 +1,48 @@
 import dash_bootstrap_components as dbc
 from dash import Dash
-from sqlite3 import Cursor
+
 
 from . import single_value_card
+from ...utilities import database_map as d_map
+from ...utilities.source import DataSource
 
-
-def render(app: Dash, data: Cursor, theme: str) -> dbc.Row:
+def render(app: Dash, source: DataSource) -> dbc.Row:
   """(Dash, Cursor, str) -> Row
   create the card that hold the single value card 
   """
 
-  data.execute('''
-  SELECT CAST(printf("%.2f",SUM(total_price)) AS REAL)
-  AS `Total Revenue` FROM pizza;
-  ''')
-
-  title1 = data.description[0][0]
-  value1 = data.fetchone()[0]
-  value1 = str(int(value1/1000)) + 'K'
+  title1 = 'Total Revenue'
+  value1 = source.summary(d_map.PRICE)
+  value1 = '{:.2f}'.format(value1/1000) + 'K'
   icon1 = 'bi bi-cash-stack'
 
-  data.execute('''
-  SELECT CAST(printf("%.2f",(SUM(total_price) /
-  COUNT(DISTINCT order_id))) 
-  AS REAL) AS `Average Total Order` FROM pizza;
-  ''')
-
-  title2 = data.description[0][0]
-  value2 = data.fetchone()[0]
+  title2 = 'Average Total Order'
+  value2 = source.summary(d_map.PRICE, 'AVG')
+  value2 = '{:.2f}'.format(value2)
   icon2 = 'bi bi-card-list'
 
-  data.execute('''
-  SELECT SUM(quantity) AS `Total Pizza Sold` FROM pizza
-  ''')
-
-  title3 = data.description[0][0]
-  value3 = data.fetchone()[0]
-  value3 = str(int(value3/1000)) + 'K'
+  title3 = 'Total Pizza Sold'
+  value3 = source.summary(d_map.QUANTITY)
+  value3 = '{:.2f}'.format(value3/1000) + 'K'
   icon3 = 'bi bi-bicycle'
 
-  data.execute('''
-  SELECT COUNT(DISTINCT order_id)
-  AS `Total Orders` FROM pizza;
-  ''')
-
-  title4 = data.description[0][0]
-  value4 = data.fetchone()[0]
-  value4 = str(int(value4/1000)) + 'K'
+  title4 = 'Total Orders'
+  value4 = source.summary(d_map.ORDER_ID, 'COUNT D')
+  value4 = '{:.2f}'.format(value4/1000) + 'K'
   icon4 = 'bi bi-cart-check-fill'
 
-
-  data.execute('''
-  SELECT CAST(printf("%.2f",(SUM(quantity) /
-  COUNT(DISTINCT order_id))) 
-  AS REAL) AS `Average Pizza per Order` FROM pizza;
-  ''')
-
-  title5 = data.description[0][0]
-  value5 = data.fetchone()[0]
+  title5 = 'Pizza per Order'
+  value5 = source.summary(d_map.QUANTITY, 'AVG')
+  value5 = '{:.2f}'.format(value5)
   icon5 = 'fa-solid fa-pizza-slice mt-2 mb-3'
 
   return dbc.Row(
     children=[
-      single_value_card.render(app, value1, title1, icon1, theme),
-      single_value_card.render(app, value2, title2, icon2, theme),
-      single_value_card.render(app, value3, title3, icon3, theme),
-      single_value_card.render(app, value4, title4, icon4, theme),
-      single_value_card.render(app, value5, title5, icon5, theme),
+      single_value_card.render(app, value1, title1, icon1),
+      single_value_card.render(app, value2, title2, icon2),
+      single_value_card.render(app, value3, title3, icon3),
+      single_value_card.render(app, value4, title4, icon4),
+      single_value_card.render(app, value5, title5, icon5),
     ],
     className='d-flex align-items-stretch w-70'
   )

@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 from dash import Dash, html
 
 
-def render(app: Dash, value: str, title:str, icon: str, theme: str) -> dbc.Col:
+def render(app: Dash, value: str, title:str, icon: str) -> dbc.Col:
   """(Dash, str, str, str, str) -> Col
   create the card of the single value 
   app: is the app
