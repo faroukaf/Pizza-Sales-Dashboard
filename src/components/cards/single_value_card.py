@@ -24,4 +24,3 @@ def render(app: Dash, value: str, title:str, icon: str) -> dbc.Col:
       )
     )
   )
-# '..assets/test.png'

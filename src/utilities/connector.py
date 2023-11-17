@@ -24,13 +24,6 @@ def get_day_name(date: str) -> str:
 
     return METADATA['days'][day_num]
 
-    # return lambda temp: bd.format_date(str2date(temp), 'E', locale=locale)
-
-# get_day_name_func = lambda locale: lambda d: bd.format_date(
-#     datetime.strptime(d, '%m-%d-%Y'), 'E', locale=locale
-# )
-
-
 def get_month_name(date: str) -> str:
     """(str) -> str
     Will add as function in the connection of 

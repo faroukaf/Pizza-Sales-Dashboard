@@ -14,14 +14,6 @@ def render(
   Create the card that hold % of each category revenue represented in pie chart
   '''
 
-  # def 2
-
-  # data = fetch2df.get_quire_result(
-  #   cursor,
-  #   'Select pizza_category as Category,'+\
-  #     'sum(total_price) as Revenue from pizza group by pizza_category;'
-  #   )
-  
   data = source.revenue_summary('category')
 
   plot = px.pie(
@@ -38,18 +30,3 @@ def render(
 
   return common_card.render(plot, ids.CATEGORY_PIE, .65,  .94, 3)
 
-
-  # return dbc.Col(
-  #   dbc.Card(
-  #     dbc.CardBody(
-  #       [
-  #         dcc.Graph(
-  #           id=ids.CATEGORY_PIE,
-  #           figure=plot
-  #         ),
-  #         html.H3(title)
-  #       ],
-  #       className='text-center w-30'
-  #     )
-  #   )
-  # )
