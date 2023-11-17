@@ -60,7 +60,7 @@ def connect(path: str) -> sqlite3.Cursor:
     local: localization language
     return cursor object of required database
     """
-    con = sqlite3.connect(path)
+    con = sqlite3.connect(path, check_same_thread=False)
     con.create_function('gmn', 1, get_month_name)
     con.create_function('gdn', 1, get_day_name)
     con.create_function('gzn', 1, get_size_name)
