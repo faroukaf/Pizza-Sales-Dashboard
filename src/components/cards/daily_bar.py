@@ -3,8 +3,8 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from . import common_card
-from ...utilities import ids, fetch2df
-from ...utilities.source import DataSource, d_map
+from ...utilities import ids
+from ...utilities.source import DataSource
 from ...utilities.get_metadata import get_day_num
 
 
