@@ -1,14 +1,14 @@
 import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash import dcc, html
-from sqlite3 import Cursor
 
 from . import common_card
 from ...utilities import ids, fetch2df
+from ...utilities.source import DataSource
 
 
 def render(
-    cursor: Cursor, title: str,
+    source: DataSource, title: str,
 ) -> dbc.Col:
   '''
   Create the card that hold % of each size revenue represented in pie chart
@@ -16,11 +16,13 @@ def render(
 
   # def 2
 
-  data = fetch2df.get_quire_result(
-    cursor,
-    'Select gzn(pizza_size) as Size,'+\
-      'sum(total_price) as Revenue from pizza group by gzn(pizza_size);'
-    )
+  # data = fetch2df.get_quire_result(
+  #   cursor,
+  #   'Select gzn(pizza_size) as Size,'+\
+  #     'sum(total_price) as Revenue from pizza group by gzn(pizza_size);'
+  #   )
+  
+  data = source.revenue_summary('size')
 
   plot = px.pie(
     names=data['Size'],

@@ -3,11 +3,13 @@ from dash.dependencies import Input, Output
 from sqlite3 import Cursor
 
 from .cards import top_cards, page1_cards
-from ..utilities import classes_names, ids, connector
+from ..utilities import ids
+from ..utilities.source import DataSource
 
 
 def render(
-    # app: Dash, cursor: Cursor, theme: str
+    # app: Dash, 
+    source: DataSource
   ) -> html.Div:
   '''(Dash) -> Div
   Create the page 1 layout of the app
@@ -40,8 +42,8 @@ def render(
       # html.H1('page1'),
       # top_cards.render(app, cursor, theme),
       # html.Br(),
-      # page1_cards.render(cursor)
-      html.H1('page 1')
+      html.H1('page 1'),
+      page1_cards.render(source)
       # months_checklist.render()
     ],
     # className= classes_names.PAGE1_LAYOUT+theme,
