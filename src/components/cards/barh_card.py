@@ -1,5 +1,6 @@
 import plotly.express as px
 import dash_bootstrap_components as dbc
+from pandas import DataFrame
 from dash import dcc, html
 from sqlite3 import Cursor
 
@@ -13,15 +14,13 @@ def ids_generator():
 ids = ids_generator()
 
 def render(
-    cursor: Cursor, title: str,
-    x: str, y: str, color: str,
-    quire: str
+    title: str, x: str, y: str,
+    color: str, data: DataFrame
 ) -> dbc.Col:
   '''
   Create the card that hold horizontal bar chart
   '''
 
-  data = fetch2df.get_quire_result(cursor, quire)
   data['text'] = data[y] + data[x].apply(lambda x: ' ' + str(x/1000)+'K' if x > 100 else ' ' + str(x))
 
   plot = px.bar(

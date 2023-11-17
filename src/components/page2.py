@@ -3,11 +3,13 @@ from dash.dependencies import Input, Output
 from sqlite3 import Cursor
 
 from .cards import top_cards, barh_cards
-from ..utilities import classes_names, ids, connector
+from ..utilities import ids
+from ..utilities.source import DataSource
 
 
 def render(
     # app: Dash, cursor: Cursor, theme: str
+    source: DataSource
   ) -> html.Div:
   '''(Dash) -> Div
   Create the page 2 layout of the app
@@ -29,7 +31,7 @@ def render(
     children=[
       # top_cards.render(app, cursor, theme),
       # html.Br(),
-      # barh_cards.render(cursor)
+      barh_cards.render(source),
       html.H1('page 2')
     ],
     # className= classes_names.PAGE2_LAYOUT+theme,
