@@ -13,6 +13,8 @@ def render(
   Create the side navigator layout of the app
   '''
 
+  common_class_name = 'd-flex justify-content-around w-100 md-2'
+
   return dbc.Col(
           [
             html.A(
@@ -24,9 +26,9 @@ def render(
                 )
               ],
               href=f'/{pages.HOME}',
-              className='bg-success text-primary d-flex justify-content-around w-100'
+              className='bg-success text-primary ' + common_class_name
             ),
-            html.Br(),
+            # html.Br(),
             html.A(
               children=[
                 html.I(className='bi bi-bar-chart-steps fa-2x'),
@@ -36,8 +38,20 @@ def render(
                 )
               ],
               href=f'/{pages.TOP_AND_WORST}',
-              className='bg-primary color-secondary d-flex justify-content-around w-100'
+              className='bg-primary color-secondary ' + common_class_name
+            ),
+            # html.Br(),
+            html.A(
+              children=[
+                html.I(className='bi bi-bar-chart-steps fa-2x'),
+                html.H4(
+                  'Top/Worst',
+                  className='color-secondary mt-2'
+                )
+              ],
+              href=f'/{pages.TOP_AND_WORST}',
+              className='bg-primary color-secondary ' + common_class_name
             )
           ],
-          # className='d-flex align-items-center'
+          className='my-2'
         )
