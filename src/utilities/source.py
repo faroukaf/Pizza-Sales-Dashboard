@@ -166,7 +166,7 @@ class DataSource:
 
         return out
     
-    def revenue_summary(self, based_on: str) -> list[str, float]:
+    def revenue_summary(self, based_on: str) -> pd.DataFrame:
         """(str, str) -> list[str, float]
         Return a revenue summary based on an attribute
 
@@ -211,7 +211,7 @@ class DataSource:
 
         return df
     
-    def quantity_summary(self, based_on: str) -> list[str, float]:
+    def quantity_summary(self, based_on: str) -> pd.DataFrame:
         """(str, str) -> list[str, float]
         Return a quantity summary based on an attribute
 
