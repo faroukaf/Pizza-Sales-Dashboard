@@ -6,6 +6,11 @@ MY_LAYOUT = 'my-layout'
 CURRENT_URL = 'current-url'
 SIDE_NIV = 'side-niv'
 
+TOP_SALES = 'top-sales'
+WORST_SALES = 'worst-sales'
+SALE_PERFORMANCE = 'sale-performance'
+WHEN_BUSIEST = 'when-busiest'
+
 PAGE1 = 'page1'
 PAGE2 = 'page2'
 

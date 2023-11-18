@@ -97,5 +97,5 @@ def render(
         ],
       )
     ],
-    className='d-flex flex-column'
+    className='d-flex flex-column w-100'
   )
