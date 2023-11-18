@@ -3,9 +3,9 @@ from sqlite3 import Cursor
 from dash import Dash, dcc, html, callback
 from dash.dependencies import Input, Output
 
-from . import page1, page2
+from . import page1, page2, side_nev
 from .cards import top_cards
-from ..utilities import ids
+from ..utilities import ids, pages
 from ..utilities.source import DataSource
 
 
@@ -23,9 +23,9 @@ def render(app: Dash, source: DataSource) -> html.Div:
   )
   def display_page(pathname: str):
       page_path = pathname.split('/')[-1]
-      if page_path == '1':
+      if page_path == pages.HOME:
         return page1.render(source)
-      elif page_path == '2':
+      elif page_path == pages.TOP_AND_WORST:
         return page2.render(source)
 
   return dbc.Container(
@@ -42,6 +42,7 @@ def render(app: Dash, source: DataSource) -> html.Div:
       html.Br(),
       dbc.Row(
       [
+        side_nev.render(source),
         dbc.Col(
           [
             top_cards.render(app, source),
@@ -50,13 +51,6 @@ def render(app: Dash, source: DataSource) -> html.Div:
           ],
           width=10
         ),
-        dbc.Col(
-          [
-            # Navigation buttons,
-            # Inside container
-          ],
-          width=2
-        )
       ]
     )
     ]
