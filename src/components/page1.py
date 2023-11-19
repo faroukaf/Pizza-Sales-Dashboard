@@ -1,3 +1,4 @@
+import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html
 
 from .cards import page1_cards
@@ -13,7 +14,7 @@ def render(
   Create the page 1 layout of the app
   '''
 
-  return html.Div(
+  return dbc.Row(
     id=ids.PAGE1,
     children=[
       page1_cards.render(source)

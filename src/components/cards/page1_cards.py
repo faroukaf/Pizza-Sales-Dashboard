@@ -31,5 +31,6 @@ def render(source: DataSource) -> dbc.Col:
         ]
       )
     ],
-    className='w-70'
+    className='w-100',
+    # width=12
   )
