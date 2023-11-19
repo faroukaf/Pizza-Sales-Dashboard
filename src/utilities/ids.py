@@ -29,4 +29,7 @@ WORST_QUANTITY= 'worst-quantity'
 TOP_TOTAL = 'top-total'
 WORST_TOTAL = 'worst-total'
 
-MONTHS_CHECKLIST = 'months-checklist'
+MONTHS_DROPDOWN = 'months-dropdown'
+CATEGORY_DROPDOWN = 'category-dropdown'
+THEME_BUTTON = 'theme-button'
+LOCALE = 'locale'
