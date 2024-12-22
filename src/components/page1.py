@@ -17,6 +17,7 @@ def render(
   return dbc.Row(
     id=ids.PAGE1,
     children=[
+      # html.Title('Home'),
       page1_cards.render(source)
     ],
   )

@@ -159,7 +159,7 @@ class DataSource:
 
 
         quire = f'SELECT {do} from {self.table} {self.filter};'
-        print(quire)
+        # print(quire)
 
         df = self.get_quire_result(quire)
         out = df.iloc[0, 0]
@@ -205,7 +205,7 @@ class DataSource:
 
         revenue = f'sum({self.SELF_DICT["Price"]})/1000 as Revenue'
         quire = f'SELECT {do}, {revenue} FROM {self.table} GROUP BY {group_by} {self.filter};'
-        print(quire)
+        # print(quire)
 
         df = self.get_quire_result(quire)
 

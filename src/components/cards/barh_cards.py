@@ -1,6 +1,7 @@
 import dash_bootstrap_components as dbc
 from dash import Dash, html
-from sqlite3 import Cursor
+from dash.dependencies import Input, Output
+# from sqlite3 import Cursor
 
 from . import barh_card
 from ...utilities import ids, database_map as d_map
@@ -8,79 +9,85 @@ from ...utilities.source import DataSource
 
 
 def render(
-    source: DataSource
+    app: Dash, source: DataSource
 ) -> dbc.Col:
-  '''(Cursor) -> Col
+  '''(Dash, Cursor) -> Col
   Create the card that hold horizontal bar chart
   '''
 
-  data1 = source.order_sale_product(
-    d_map.PRICE, 'Revenue', 'Pizza Name',
-    True
+  @app.callback(
+    Output(ids.BARH_CARD, 'children'),
+    Input(ids.MONTHS_DROPDOWN, 'value'),
   )
-
-  plot1 = barh_card.render(
-      'Top 5 Pizzas by Revenue',
-      'Revenue', 'Pizza Name', 'blue',
-      data1, ids.TOP_REVENUE
+  def get_plots(value):
+    print('22')
+    data1 = source.order_sale_product(
+      d_map.PRICE, 'Revenue', 'Pizza Name',
+      True
     )
 
+    plot1 = barh_card.render(
+        'Top 5 Pizzas by Revenue',
+        'Revenue', 'Pizza Name', 'blue',
+        data1, ids.TOP_REVENUE
+      )
 
-  data2 = source.order_sale_product(
-    d_map.QUANTITY, 'Quantity', 'Pizza Name',
-    True
-  )
 
-  plot2 = barh_card.render(
-      'Top 5 Pizzas by Quantity',
-      'Quantity', 'Pizza Name', 'green',
-      data2, ids.TOP_QUANTITY
+    data2 = source.order_sale_product(
+      d_map.QUANTITY, 'Quantity', 'Pizza Name',
+      True
     )
 
-  data3 = source.order_sale_product(
-    d_map.ORDER_ID, 'Total Order', 'Pizza Name',
-    True, 'COUNT'
-  )
+    plot2 = barh_card.render(
+        'Top 5 Pizzas by Quantity',
+        'Quantity', 'Pizza Name', 'green',
+        data2, ids.TOP_QUANTITY
+      )
 
-  plot3 = barh_card.render(
-      'Top 5 Pizzas by Total Orders',
-      'Total Order', 'Pizza Name', 'brown',
-      data3, ids.TOP_TOTAL
+    data3 = source.order_sale_product(
+      d_map.ORDER_ID, 'Total Order', 'Pizza Name',
+      True, 'COUNT'
     )
 
-  data4 = source.order_sale_product(
-    d_map.PRICE, 'Revenue', 'Pizza Name',
-  )
+    plot3 = barh_card.render(
+        'Top 5 Pizzas by Total Orders',
+        'Total Order', 'Pizza Name', 'brown',
+        data3, ids.TOP_TOTAL
+      )
 
-  plot4 = barh_card.render(
-      'Worst 5 Pizzas by Revenue',
-      'Revenue', 'Pizza Name', 'blue',
-      data4, ids.WORST_REVENUE
+    data4 = source.order_sale_product(
+      d_map.PRICE, 'Revenue', 'Pizza Name',
     )
 
-  data5 = source.order_sale_product(
-    d_map.QUANTITY, 'Quantity', 'Pizza Name'
-  )
+    plot4 = barh_card.render(
+        'Worst 5 Pizzas by Revenue',
+        'Revenue', 'Pizza Name', 'blue',
+        data4, ids.WORST_REVENUE
+      )
 
-  plot5 = barh_card.render(
-      'Worst 5 Pizzas by Quantity',
-      'Quantity', 'Pizza Name', 'green',
-      data5, ids.WORST_QUANTITY
+    data5 = source.order_sale_product(
+      d_map.QUANTITY, 'Quantity', 'Pizza Name'
     )
 
-  data6 = source.order_sale_product(
-    d_map.ORDER_ID, 'Total Order', 'Pizza Name',
-    func='COUNT'
-  )
+    plot5 = barh_card.render(
+        'Worst 5 Pizzas by Quantity',
+        'Quantity', 'Pizza Name', 'green',
+        data5, ids.WORST_QUANTITY
+      )
 
-  plot6 = barh_card.render(
-      'Worst 5 Pizzas by Total Orders',
-      'Total Order', 'Pizza Name', 'brown',
-      data6, ids.WORST_TOTAL
+    data6 = source.order_sale_product(
+      d_map.ORDER_ID, 'Total Order', 'Pizza Name',
+      func='COUNT'
     )
 
-  return dbc.Col(
-    [
+    plot6 = barh_card.render(
+        'Worst 5 Pizzas by Total Orders',
+        'Total Order', 'Pizza Name', 'brown',
+        data6, ids.WORST_TOTAL
+      )
+    
+
+    return [
       dbc.Row(
         [
           plot1,
@@ -96,6 +103,28 @@ def render(
           plot6
         ],
       )
-    ],
+    ]
+
+  
+
+  return dbc.Col(
+    id=ids.BARH_CARD,
+    # children=[
+    #   dbc.Row(
+    #     [
+    #       plot1,
+    #       plot2,
+    #       plot3
+    #     ],
+    #   ),
+    #   html.Br(),
+    #   dbc.Row(
+    #     [
+    #       plot4,
+    #       plot5,
+    #       plot6
+    #     ],
+    #   )
+    # ],
     className='d-flex flex-column w-100'
   )

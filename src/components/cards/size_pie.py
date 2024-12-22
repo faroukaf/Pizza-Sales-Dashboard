@@ -28,7 +28,7 @@ def render(
     textposition='outside'
   )
 
-  print('data', data, data.columns, sep='\n')
+  # print('data', data, data.columns, sep='\n')
 
   return common_card.render(plot, ids.SIZE_PIE, .52,  .94, 3)
 

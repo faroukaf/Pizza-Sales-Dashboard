@@ -31,5 +31,6 @@ WORST_TOTAL = 'worst-total'
 
 MONTHS_DROPDOWN = 'months-dropdown'
 CATEGORY_DROPDOWN = 'category-dropdown'
+SIZE_DROPDOWN = 'size-dropdown'
 THEME_BUTTON = 'theme-button'
 LOCALE = 'locale'

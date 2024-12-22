@@ -3,7 +3,7 @@ from sqlite3 import Cursor
 from dash import Dash, dcc, html, callback
 from dash.dependencies import Input, Output
 
-from . import page1, page2, side_nev
+from . import page1, page2, top_bar
 from .cards import (
   sale_performance, top_cards, links_card,
   top_sellers, when_busiest, worst_sellers
@@ -30,7 +30,8 @@ def render(app: Dash, source: DataSource) -> html.Div:
   def display_page(pathname: str):
       page_path = pathname.split('/')[-1]
       if page_path == pages.HOME:
-        page = page1.render(source)
+        # page = page1.render(source)
+        page = html.Div()
 
         down_nav = dbc.Container(
           [
@@ -41,7 +42,7 @@ def render(app: Dash, source: DataSource) -> html.Div:
           ]
         )
       elif page_path == pages.TOP_AND_WORST:
-        page = page2.render(source)
+        page = page2.render(app, source)
 
         down_nav = dbc.Container(
           [
@@ -62,7 +63,7 @@ def render(app: Dash, source: DataSource) -> html.Div:
       ),
       dbc.Row(
         [
-          # Top bar for filter and language and theme
+          top_bar.render(source)
         ]
       ),
       html.Br(),
